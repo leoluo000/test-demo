@@ -1,6 +1,7 @@
 //
 // Created by xiongzhaowu on 2021/1/3.
 //
+#include <iostream>
 using namespace std;
 #ifndef INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
 #define INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
