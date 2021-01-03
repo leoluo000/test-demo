@@ -2,6 +2,8 @@
 #include "Person.cpp"
 #include "Person.h"
 #include "AddStudent.cpp"
+#include<iomanip>
+#include<algorithm>
 
 using namespace std;
 
@@ -54,7 +56,6 @@ void deletePerson(int number);
 
 int main() {
     loadFile();
-    cout << studentList.size() << endl;
     menu();
     while (true) {
         int condition = 0;
@@ -186,30 +187,30 @@ void threeSubmenu() {
  * 4、学生信息排序
  */
 void fourSubmenu() {
-    // if (studentList.size() <= 0) {
-    //     cout << "当前没有任何学生信息，请先进行添加！" << endl;
-    //     return;
-    // }
+    if (studentList.size() <= 0) {
+        cout << "当前没有任何学生信息，请先进行添加！" << endl;
+        return;
+    }
 
-    // list<Person> sortList;
-    // sortList.assign(studentList.begin(), studentList.end());
+    list<Person> sortList;
+    sortList.assign(studentList.begin(), studentList.end());
 
-    // cout << "请选择排序方式（1：根据学号升序排列，2：根据学号降序排列）" << endl;
-    // int condition = 0;
-    // cin >> condition;
-    // switch (condition) {
-    //     case 1:
-    //         sortList.sort(sortPersonASC);
-    //         toString(sortList);
-    //         break;
-    //     case 2:
-    //         sortList.sort(sortPersonDESC);
-    //         toString(sortList);
-    //         break;
-    //     default:
-    //         cout << "请输入正确的数字！" << endl;
-    //         break;
-    // }
+    cout << "请选择排序方式（1：根据学号升序排列，2：根据学号降序排列）" << endl;
+    int condition = 0;
+    cin >> condition;
+    switch (condition) {
+        case 1:
+//            sortList.sort(sortPersonASC);
+            display(sortList);
+            break;
+        case 2:
+//            sortList.sort(sortPersonDESC);
+            display(sortList);
+            break;
+        default:
+            cout << "请输入正确的数字！" << endl;
+            break;
+    }
 }
 
 /**
@@ -368,11 +369,19 @@ list<Person> findPerson(string name) {
  * @param personList 
  */
 void display(list<Person> personList) {
-    cout << "学号\t\t姓名\t\t性别\t\t出生年月\t\t地址\t\t电话\t\t邮箱\t\t课程名称\t\t考试成绩" << endl;
+    cout << "学号\t\t姓名\t\t性别\t\t出生年月\t\t地址\t\t\t\t电话\t\t邮箱\t\t课程名称\t\t考试成绩" << endl;
     for (list<Person>::iterator iter = personList.begin(); iter != personList.end(); ++iter) {
-        cout << to_string(iter->number) + "\t" + iter->name + "\t" + iter->sex + "\t" + iter->dateOfBirth + "\t"
-                + iter->address + "\t" + iter->phone + "\t" + iter->email + "\t" + iter->courseName + "\t"
-                + to_string(iter->achievement) + "\t" << endl;
+        cout <<
+             left << setw(8) << to_string(iter->number) <<
+             left << setw(8) << iter->name <<
+             left << setw(8) << iter->sex <<
+             left << setw(12) << iter->dateOfBirth <<
+             left << setw(16) << iter->address <<
+             left << setw(8) << iter->phone <<
+             left << setw(8) << iter->email <<
+             left << setw(12) << iter->courseName <<
+             left << setw(8) << iter->achievement <<
+             endl;
     }
 }
 
