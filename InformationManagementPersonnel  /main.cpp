@@ -291,6 +291,9 @@ void sixSubmenu() {
             double achievement;
             cin >> achievement;
             (*iter).achievement = achievement;
+
+            cout << "对该学生相关信息修改完成！" << endl;
+            display(studentList);
         } else {
             iter++;
         }
@@ -302,7 +305,9 @@ void sixSubmenu() {
  */
 void sevenSubmenu() {
     studentList.clear();
+    cout << "学生信息清空成功" << endl;
     display(studentList);
+    cout << "" << endl;
 }
 
 /**
@@ -390,8 +395,11 @@ void display(list<Person> personList) {
  * @param number
  */
 void deletePerson(int number) {
-//   studentList.remove_if([](Person person) {return (person.number == number); });
-//   for (list<Person>::iterator iter = .begin(); iter != studentList.end(); ++iter) {
-//       iter.
-//   }
+    for (list<Person>::iterator lit = studentList.begin(); lit != studentList.end();) {
+        if ((*lit).number == number) {
+            lit = studentList.erase(lit);
+        } else {
+            lit++;
+        }
+    }
 }
