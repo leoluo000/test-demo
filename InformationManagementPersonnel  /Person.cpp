@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Person.h"
 #include <list>
+#ifndef _COMMON
+#define _COMMON
 
 using namespace std;
 
@@ -10,11 +12,12 @@ using namespace std;
 class SchoolStaff {
 public:
     static list<Person> list;
+
     // 个人信息
     virtual void getPersonInfo(Person person) = 0;
 
     // 获取人员种类
-    virtual char *getPersonType() = 0;
+    virtual char* getPersonType() = 0;
 };
 
 /**
@@ -22,13 +25,13 @@ public:
  */
 class Student : public SchoolStaff {
 public:
-    void getPersonInfo(Person person) override {
+    void getPersonInfo(Person person) {
         cout << "学号：" + to_string(person.number) + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
                 person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
                 " 课程名称：" + person.courseName + " 考试成绩：" + to_string(person.achievement) << endl;
     }
 
-    char *getPersonType() override {
+    char* getPersonType() {
         return "学生";
     }
 
@@ -39,13 +42,13 @@ public:
  */
 class Teacher : public SchoolStaff {
 public:
-    void getPersonInfo(Person person) override {
+    void getPersonInfo(Person person) {
         cout << "编号：" + to_string(person.number) + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
                 person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
                 " 所教课程：" + person.teachingCourses << endl;
     }
 
-    char *getPersonType() override {
+    char* getPersonType() {
         return "老师";
     }
 };
@@ -55,13 +58,15 @@ public:
  */
 class Admin : public SchoolStaff {
 public:
-    void getPersonInfo(Person person) override {
+    void getPersonInfo(Person person) {
         cout << "编号：" + to_string(person.number) + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
                 person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
                 " 管理校内人员数量：" + to_string(person.managingTheNumberOfPeople) << endl;
     }
 
-    char *getPersonType() override {
+    char* getPersonType() {
         return "管理员";
     }
 };
+
+#endif
