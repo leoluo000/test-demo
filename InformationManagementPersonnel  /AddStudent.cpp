@@ -51,7 +51,6 @@ void loadFile(){
     while(getline(infile,s))
     {
         list<string> thisList = split(s,",");
-        cout<<s<<endl;
         studentList.push_back(listToPerson(thisList));
     }
     infile.close();
