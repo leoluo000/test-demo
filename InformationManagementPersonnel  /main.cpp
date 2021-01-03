@@ -124,6 +124,7 @@ void menu() {
  */
 void oneSubmenu() {
     addStudent();
+    display(studentList);
 }
 
 /**
@@ -376,18 +377,18 @@ list<Person> findPerson(string name) {
  * @param personList 
  */
 void display(list<Person> personList) {
-    cout << "学号\t\t姓名\t\t性别\t\t出生年月\t\t地址\t\t\t\t电话\t\t邮箱\t\t课程名称\t\t考试成绩" << endl;
+    cout << "学号\t\t\t\t姓名\t\t\t\t性别\t\t\t\t出生年月\t\t\t\t地址\t\t\t\t电话\t\t\t\t邮箱\t\t\t\t课程名称\t\t\t\t考试成绩" << endl;
     for (list<Person>::iterator iter = personList.begin(); iter != personList.end(); ++iter) {
         cout <<
-             left << setw(8) << to_string(iter->number) <<
-             left << setw(8) << iter->name <<
-             left << setw(8) << iter->sex <<
-             left << setw(12) << iter->dateOfBirth <<
+             left << setw(16) << to_string(iter->number) <<
+             left << setw(16) << iter->name <<
+             left << setw(16) << iter->sex <<
+             left << setw(20) << iter->dateOfBirth <<
              left << setw(16) << iter->address <<
-             left << setw(8) << iter->phone <<
-             left << setw(8) << iter->email <<
-             left << setw(12) << iter->courseName <<
-             left << setw(8) << iter->achievement <<
+             left << setw(16) << iter->phone <<
+             left << setw(16) << iter->email <<
+             left << setw(20) << iter->courseName <<
+             left << setw(16) << iter->achievement <<
              endl;
     }
 }
