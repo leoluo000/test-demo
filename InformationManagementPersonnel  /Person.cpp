@@ -1,29 +1,7 @@
 #include <iostream>
+#include "Person.h"
 
-struct Person {
-    // 编号
-    int number;
-    // 姓名
-    char name[50];
-    // 性别
-    char sex[50];
-    // 出生年月
-    char dateOfBirth[50];
-    // 地址
-    char address[100];
-    // 电话
-    char phone[50];
-    // Email
-    char email[50];
-    // 课程名称
-    char courseName[100];
-    // 考试成绩
-    double achievement;
-    // 所教授课程
-    char teachingCourses[100];
-    // 管理校内人员数量
-    int managingTheNumberOfPeople;
-};
+using namespace std;
 
 /**
  * 校内人员
@@ -34,7 +12,7 @@ public:
     virtual void getPersonInfo(Person person) = 0;
 
     // 获取人员种类
-    virtual char getPersonType() = 0;
+    virtual char *getPersonType() = 0;
 };
 
 /**
@@ -43,14 +21,14 @@ public:
 class Student : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
-        std::cout
-                << "学号：" + person.number + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" + person.dateOfBirth +
-                   " 地址：" + person.address + " 电话：" + person.phone + " Email：" + person.email + " 课程名称：" +
-                   person.courseName + " 考试成绩：" + person.achievement << std::endl;
+        cout << "学号：" + person.number << " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
+                                         person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone +
+                                         " email：" + person.email + " 课程名称：" + person.courseName + " 考试成绩："
+             << person.achievement << endl;
     }
 
-    char getPersonType() override {
-
+    char *getPersonType() override {
+        return "学生";
     }
 
 };
@@ -61,14 +39,16 @@ public:
 class Teacher : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
-        std::cout
-                << "编号：" + person.number + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" + person.dateOfBirth +
-                   " 地址：" + person.address + " 电话：" + person.phone + " Email：" + person.email + " 所教课程：" +
-                   person.teachingCourses << std::endl;
+        cout
+                << "编号：" + person.number << " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
+                                            person.dateOfBirth +
+                                            " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
+                                            " 所教课程：" +
+                                            person.teachingCourses << endl;
     }
 
-    char getPersonType() override {
-
+    char *getPersonType() override {
+        return "老师";
     }
 };
 
@@ -78,13 +58,15 @@ public:
 class Admin : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
-        std::cout
-                << "编号：" + person.number  + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" + person.dateOfBirth +
-                   " 地址：" + person.address + " 电话：" + person.phone + " Email：" + person.email + " 管理校内人员数量：" +
-                   person.managingTheNumberOfPeople << std::endl;
+        cout
+                << "编号：" + person.number << " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
+                                            person.dateOfBirth +
+                                            " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
+                                            " 管理校内人员数量：" <<
+                person.managingTheNumberOfPeople << endl;
     }
 
-    char getPersonType() override {
-
+    char *getPersonType() override {
+        return "管理员";
     }
 };
