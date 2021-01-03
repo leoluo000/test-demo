@@ -51,7 +51,6 @@ void loadFile(){
     while(getline(infile,s))
     {
         list<string> thisList = split(s,",");
-        cout<<s<<endl;
         studentList.push_back(listToPerson(thisList));
     }
     infile.close();
@@ -100,7 +99,7 @@ list<string> split(const string& str, const string& delim) {
 }
 
 void updateList(){
-    string deleC = "del " + filePath;
+    string deleC = "rm " + filePath;
     system(deleC.c_str());
     ofstream outfile;
     outfile.open(filePath, ios::app);
