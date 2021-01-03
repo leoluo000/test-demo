@@ -79,7 +79,7 @@ class Admin : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
         std::cout
-                << "编号：" + person.number + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" + person.dateOfBirth +
+                << "编号：" + person.number  + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" + person.dateOfBirth +
                    " 地址：" + person.address + " 电话：" + person.phone + " Email：" + person.email + " 管理校内人员数量：" +
                    person.managingTheNumberOfPeople << std::endl;
     }
