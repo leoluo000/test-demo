@@ -298,6 +298,7 @@ void sixSubmenu() {
             iter++;
         }
     }
+    updateList();
 }
 
 /**
@@ -308,6 +309,7 @@ void sevenSubmenu() {
     cout << "学生信息清空成功" << endl;
     display(studentList);
     cout << "" << endl;
+    updateList();
 }
 
 /**
@@ -402,4 +404,5 @@ void deletePerson(int number) {
             lit++;
         }
     }
+    updateList();
 }

@@ -9,6 +9,7 @@ using namespace std;
 
 void addStudent();
 void loadFile();
+void updateList();
 Person listToPerson(list<string> strList);
 list<string> split(const string& str, const string& delim);
 
@@ -36,8 +37,7 @@ void addStudent(){
     "," + person.dateOfBirth + "," + person.address + "," + person.phone + 
     "," + person.email + "," + person.courseName + "," + to_string(person.achievement);
     ofstream outfile;
-    string file_name = "file/students.txt";
-    outfile.open(file_name, ios::app);
+    outfile.open(filePath, ios::app);
     outfile << data << endl;
     outfile.close();
     studentList.push_back(person);
@@ -45,7 +45,7 @@ void addStudent(){
 
 void loadFile(){
     ifstream infile; 
-    infile.open("file/students.txt");
+    infile.open(filePath);
     assert(infile.is_open());
     string s;
     while(getline(infile,s))
@@ -97,4 +97,18 @@ list<string> split(const string& str, const string& delim) {
 	}
  
 	return res;
+}
+
+void updateList(){
+    string deleC = "del " + filePath;
+    system(deleC.c_str());
+    ofstream outfile;
+    outfile.open(filePath, ios::app);
+    for (list<Person>::iterator iter = studentList.begin(); iter != studentList.end(); ++iter) {
+        string data = to_string(iter->number) + "," + iter->name + "," + iter->sex + 
+            "," + iter->dateOfBirth + "," + iter->address + "," + iter->phone + 
+            "," + iter->email + "," + iter->courseName + "," + to_string(iter->achievement);
+        outfile << data << endl;
+    }
+    outfile.close();
 }

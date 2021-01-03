@@ -31,4 +31,5 @@ struct Person {
 };
 
 static list<Person> studentList;
+static string filePath = "file/students.txt";
 #endif //INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
