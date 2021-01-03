@@ -5,8 +5,6 @@ using namespace std;
 #ifndef INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
 #define INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
 
-#endif //INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
-
 struct Person {
     // 编号
     int number;
@@ -31,3 +29,5 @@ struct Person {
     // 管理校内人员数量
     int managingTheNumberOfPeople;
 };
+
+#endif //INFORMATIONMANAGEMENTPERSONNEL___PERSON_H

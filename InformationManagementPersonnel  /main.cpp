@@ -1,4 +1,6 @@
 #include <iostream>
+#include "Person.cpp"
+#include "Person.h"
 
 using namespace std;
 
@@ -94,10 +96,38 @@ void menu() {
     cout << "\t\t│       7、清空学生信息         │" << endl;
     cout << "\t\t│       8、系统退出            │" << endl;
     cout << "\t\t└────────────────────────────┘" << endl;
-    cout << "请输入要进行的操作: " << endl;
+    cout << "请输入1-8之间的数：" << endl;
 }
 
 void oneSubmenu() {
+    Person person;
+
+    cout << "请输入学生学号\n" << endl;
+    cin >> person.number;
+
+    cout << "请输入学生姓名\n" << endl;
+    cin >> person.name;
+
+    cout << "请输入学生性别\n" << endl;
+    cin >> person.sex;
+
+    cout << "请输入学生出生年月\n" << endl;
+    cin >> person.dateOfBirth;
+
+    cout << "请输入学生地址\n" << endl;
+    cin >> person.address;
+
+    cout << "请输入学生电话\n" << endl;
+    cin >> person.phone;
+
+    cout << "请输入学生邮箱\n" << endl;
+    cin >> person.email;
+
+    cout << "请输入学生课程名称\n" << endl;
+    cin >> person.courseName;
+
+    cout << "请输入学生考试成绩\n" << endl;
+    cin >> person.achievement;
 
 }
 
@@ -129,7 +159,3 @@ void eightSubmenu() {
     cout << "系统退出！" << endl;
     exit(1);
 }
-
-
-
-
