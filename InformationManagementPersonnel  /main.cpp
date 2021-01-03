@@ -129,10 +129,15 @@ void oneSubmenu() {
     cout << "请输入学生考试成绩\n" << endl;
     cin >> person.achievement;
 
+    (new Student())->getPersonInfo(person);
 }
 
 void twoSubmenu() {
-
+    Person person;
+    cout << "学号\t\t姓名\t\t性别\t\t出生年月\t\t地址\t\t电话\t\t邮箱\t\t课程名称\t\t考试成绩" << endl;
+    cout << to_string(person.number) + "\t" + person.name + "\t" + person.sex + "\t" + person.dateOfBirth + "\t"
+            + person.address + "\t" + person.phone + "\t" + person.email + "\t" + person.courseName + "\t"
+            + to_string(person.achievement) + "\t" << endl;
 }
 
 void threeSubmenu() {

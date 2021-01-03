@@ -21,10 +21,9 @@ public:
 class Student : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
-        cout << "学号：" + person.number << " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
-                                         person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone +
-                                         " email：" + person.email + " 课程名称：" + person.courseName + " 考试成绩："
-             << person.achievement << endl;
+        cout << "学号：" + to_string(person.number) + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
+                person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
+                " 课程名称：" + person.courseName + " 考试成绩：" + to_string(person.achievement) << endl;
     }
 
     char *getPersonType() override {
@@ -39,12 +38,9 @@ public:
 class Teacher : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
-        cout
-                << "编号：" + person.number << " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
-                                            person.dateOfBirth +
-                                            " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
-                                            " 所教课程：" +
-                                            person.teachingCourses << endl;
+        cout << "编号：" + to_string(person.number) + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
+                person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
+                " 所教课程：" + person.teachingCourses << endl;
     }
 
     char *getPersonType() override {
@@ -58,12 +54,9 @@ public:
 class Admin : public SchoolStaff {
 public:
     void getPersonInfo(Person person) override {
-        cout
-                << "编号：" + person.number << " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
-                                            person.dateOfBirth +
-                                            " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
-                                            " 管理校内人员数量：" <<
-                person.managingTheNumberOfPeople << endl;
+        cout << "编号：" + to_string(person.number) + " 姓名：" + person.name + " 性别：" + person.sex + " 出生年月：" +
+                person.dateOfBirth + " 地址：" + person.address + " 电话：" + person.phone + " email：" + person.email +
+                " 管理校内人员数量：" + to_string(person.managingTheNumberOfPeople) << endl;
     }
 
     char *getPersonType() override {
