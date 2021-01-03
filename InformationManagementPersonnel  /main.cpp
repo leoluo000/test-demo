@@ -43,9 +43,9 @@ list<Person> findPerson(int number);
 list<Person> findPerson(string name);
 
 // 10、排序学生信息
-list<Person> sortPersonASC();
+bool sortPersonASC(const Person &m1, const Person &m2);
 
-list<Person> sortPersonDESC();
+bool sortPersonDESC(const Person &m1, const Person &m2);
 
 // 11、输出集合信息
 void display(list<Person> personList);
@@ -200,11 +200,11 @@ void fourSubmenu() {
     cin >> condition;
     switch (condition) {
         case 1:
-//            sortList.sort(sortPersonASC);
+            sortList.sort(sortPersonASC);
             display(sortList);
             break;
         case 2:
-//            sortList.sort(sortPersonDESC);
+            sortList.sort(sortPersonDESC);
             display(sortList);
             break;
         default:
