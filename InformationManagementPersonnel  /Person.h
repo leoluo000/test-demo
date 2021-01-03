@@ -2,6 +2,7 @@
 // Created by xiongzhaowu on 2021/1/3.
 //
 #include <iostream>
+#include "list"
 using namespace std;
 #ifndef INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
 #define INFORMATIONMANAGEMENTPERSONNEL___PERSON_H
@@ -32,4 +33,5 @@ struct Person {
 
 };
 
+static list<Person> studentList;
 #endif //INFORMATIONMANAGEMENTPERSONNEL___PERSON_H

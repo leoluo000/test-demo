@@ -11,8 +11,6 @@ using namespace std;
  */
 class SchoolStaff {
 public:
-    static list<Person> list;
-
     // 个人信息
     virtual void getPersonInfo(Person person) = 0;
 
