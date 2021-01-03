@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/InformationManagementPersonnel__.dir/main.cpp.o CMakeFiles/InformationManagementPersonnel__.dir/Person.cpp.o CMakeFiles/InformationManagementPersonnel__.dir/Student.cpp.o  -o InformationManagementPersonnel__ 
