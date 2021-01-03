@@ -29,6 +29,7 @@ struct Person {
     string teachingCourses;
     // 管理校内人员数量
     int managingTheNumberOfPeople;
+
 };
 
 #endif //INFORMATIONMANAGEMENTPERSONNEL___PERSON_H

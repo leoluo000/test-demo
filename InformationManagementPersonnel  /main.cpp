@@ -35,6 +35,22 @@ void sevenSubmenu();
 // 8、系统退出子菜单
 void eightSubmenu();
 
+// 9、查找校内人员
+list<Person> findPerson(int number);
+
+list<Person> findPerson(string name);
+
+// 10、排序学生信息
+list<Person> sortPersonASC();
+
+list<Person> sortPersonDESC();
+
+// 11、输出集合信息
+void toString(list<Person> personList);
+
+// 12、删除校内人员
+void deletePerson(int number);
+
 
 int main() {
     menu();
@@ -100,29 +116,125 @@ void menu() {
     cout << "请输入1-8之间的数：" << endl;
 }
 
+/**
+ * 1、学生信息录入
+ */
 void oneSubmenu() {
     addStudent();
 }
 
+/**
+ * 2、学生信息浏览
+ */
 void twoSubmenu() {
-    Person person;
-    cout << "学号\t\t姓名\t\t性别\t\t出生年月\t\t地址\t\t电话\t\t邮箱\t\t课程名称\t\t考试成绩" << endl;
-    cout << to_string(person.number) + "\t" + person.name + "\t" + person.sex + "\t" + person.dateOfBirth + "\t"
-            + person.address + "\t" + person.phone + "\t" + person.email + "\t" + person.courseName + "\t"
-            + to_string(person.achievement) + "\t" << endl;
+    if (SchoolStaff::list.size() <= 0) {
+        cout << "当前没有任何学生信息，请先进行添加！" << endl;
+        return;
+    }
+
+    toString(SchoolStaff::list);
 }
 
-void threeSubmenu() {
+/**
+ * 3、信息查询模块
+ */
+//void threeSubmenu() {
+//    if (SchoolStaff::list.size() <= 0) {
+//        cout << "当前没有任何学生信息，请先进行添加！" << endl;
+//        return;
+//    }
+//
+//    cout << "请选择查询方式（1：根据学号进行查询，2：根据姓名进行查询）" << endl;
+//    int condition = 0;
+//    cin >> condition;
+//    switch (condition) {
+//        case 1:
+//            cout << "请输入学号：" << endl;
+//            int number;
+//            cin >> number;
+//            list<Person> personList = findPerson(number);
+//            if (personList.size() == 0) {
+//                cout << "未找到该学生，请确认学号是否正确！" << endl;
+//                break;
+//            }
+//
+//            toString(personList);
+//            break;
+//        case 2:
+//            cout << "请输入姓名：" << endl;
+//            string name;
+//            cin >> name;
+//            list<Person> namePersonList = findPerson(name);
+//            if (namePersonList.size() == 0) {
+//                cout << "未找到该学生，请确认姓名是否正确！" << endl;
+//                break;
+//            }
+//
+//            toString(namePersonList);
+//            break;
+//        default:
+//            cout << "请输入正确的数字（1-2）!" << endl;
+//            break;
+//    }
+//
+//}
 
-}
-
+/**
+ * 4、学生信息排序
+ */
 void fourSubmenu() {
+    if (SchoolStaff::list.size() <= 0) {
+        cout << "当前没有任何学生信息，请先进行添加！" << endl;
+        return;
+    }
 
+    list<Person> sortList;
+    sortList.assign(SchoolStaff::list.begin(), SchoolStaff::list.end());
+
+    cout << "请选择排序方式（1：根据学号升序排列，2：根据学号降序排列）" << endl;
+    int condition = 0;
+    cin >> condition;
+    switch (condition) {
+        case 1:
+            sortList.sort(sortPersonASC);
+            toString(sortList);
+            break;
+        case 2:
+            sortList.sort(sortPersonDESC);
+            toString(sortList);
+            break;
+        default:
+            cout << "请输入正确的数字！" << endl;
+            break;
+    }
 }
 
-void fiveSubmenu() {
-
-}
+/**
+ * 5、学生信息删除
+ */
+//void fiveSubmenu() {
+//    if (SchoolStaff::list.size() <= 0) {
+//        cout << "当前没有任何学生信息，请先进行添加！" << endl;
+//        return;
+//    }
+//
+//    cout << "请输入要删除的学号：" << endl;
+//    int condition = 0;
+//    cin >> condition;
+//    switch (condition) {
+//        case 1:
+//            SchoolStaff::list
+//                    toString(sortList);
+//            break;
+//        case 2:
+//            sortList.sort(sortPersonDESC);
+//            toString(sortList);
+//            break;
+//        default:
+//            cout << "请输入正确的数字！" << endl;
+//            break;
+//    }
+//}
 
 void sixSubmenu() {
 
@@ -136,3 +248,76 @@ void eightSubmenu() {
     cout << "系统退出！" << endl;
     exit(1);
 }
+
+
+/**
+ * 根据学号进行升序排序
+ * @param m1 学号1
+ * @param m2 学号2
+ * @return
+ */
+bool sortPersonASC(const Person &m1, const Person &m2) {
+    return m1.number < m2.number;
+}
+
+/**
+ * 根据学号进行降序排列
+ * @param m1 学号1
+ * @param m2 学号2
+ * @return
+ */
+bool sortPersonDESC(const Person &m1, const Person &m2) {
+    return m1.number > m2.number;
+}
+
+/**
+ * 根据学号进行查找
+ * @param number 学号
+ * @return
+ */
+list<Person> findPerson(int number) {
+    list<Person> numberPersonList;
+    for (list<Person>::iterator iter = SchoolStaff::list.begin(); iter != SchoolStaff::list.end(); ++iter) {
+        if (iter->number == number) {
+            numberPersonList.push_front(*iter);
+        }
+    }
+}
+
+/**
+ * 根据姓名进行查找
+ * @param name 姓名
+ * @return
+ */
+list<Person> findPerson(string name) {
+    list<Person> numberPersonList;
+    for (list<Person>::iterator iter = SchoolStaff::list.begin(); iter != SchoolStaff::list.end(); ++iter) {
+        if (iter->name == name) {
+            numberPersonList.push_front(iter.operator*());
+        }
+    }
+}
+
+/**
+ * 输出集合信息
+ * @param personList 
+ */
+void toString(list<Person> personList) {
+    cout << "学号\t\t姓名\t\t性别\t\t出生年月\t\t地址\t\t电话\t\t邮箱\t\t课程名称\t\t考试成绩" << endl;
+    for (list<Person>::iterator iter = personList.begin(); iter != personList.end(); ++iter) {
+        cout << to_string(iter->number) + "\t" + iter->name + "\t" + iter->sex + "\t" + iter->dateOfBirth + "\t"
+                + iter->address + "\t" + iter->phone + "\t" + iter->email + "\t" + iter->courseName + "\t"
+                + to_string(iter->achievement) + "\t" << endl;
+    }
+}
+
+/**
+ * 删除校内人员
+ * @param number
+ */
+//void deletePerson(int number) {
+//    SchoolStaff::list.remove_if([](Person person) {return (person.number == number); });
+//    for (list<Person>::iterator iter = .begin(); iter != SchoolStaff::list.end(); ++iter) {
+//        iter.
+//    }
+//}
