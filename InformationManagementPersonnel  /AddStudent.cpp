@@ -100,7 +100,7 @@ list<string> split(const string& str, const string& delim) {
 }
 
 void updateList(){
-    string deleC = "del " + filePath;
+    string deleC = "rm " + filePath;
     system(deleC.c_str());
     ofstream outfile;
     outfile.open(filePath, ios::app);
